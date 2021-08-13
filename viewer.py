@@ -4,12 +4,12 @@ import create_instance
 
 
 def visualize(h: list[list[int]], v: list[list[int]]):
-    p = _get_coordinate(h ,v)
-    h_color, v_color = _get_color(h, v)
-
-    row = len(v)
-    column = len(h[0])
+    row = len(h[0])
+    column = len(v)
     
+    p = _get_coordinate(h ,v, row, column)
+    h_color, v_color = _get_color(h, v, row, column)
+
     for i in range(column - 1):
         for j in range(row):
             x, y = p[i][j]
@@ -35,9 +35,8 @@ def visualize(h: list[list[int]], v: list[list[int]]):
     plt.show()
 
 
-def _get_coordinate(h: list[list[int]], v: list[list[int]]):
-    row = len(v)
-    column = len(h[0])
+def _get_coordinate(h: list[list[int]], v: list[list[int]],
+                    row, column):
     p = [[0 for j in range(row)] for i in range(column)]
     for r in range(row):
         for c in range(column):
@@ -46,10 +45,8 @@ def _get_coordinate(h: list[list[int]], v: list[list[int]]):
     return p
 
 
-def _get_color(h: list[list[int]], v: list[list[int]]):
-    row = len(v)
-    column = len(h[0])
-
+def _get_color(h: list[list[int]], v: list[list[int]],
+               row, column):
     h_color = [[0 for j in range(row)] for i in range(column - 1)]
     v_color = [[0 for j in range(row - 1)] for i in range(column)]
 

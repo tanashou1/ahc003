@@ -16,14 +16,14 @@ def create(row: int, column: int,
     for i in range(row):
         H.append(random.randint(1000 + D, 9000 - D))
 
-    if M == 2:
+    if M == 2 and column >= 3:
         xh = []
         H2 = []
         for j in range(row):
-            xh.append(random.randint(1, column-1))
+            xh.append(random.randint(1, column-2))
             H2.append(random.randint(1000 + D, 9000 - D))
     else:
-        xh = column
+        xh = [column] + row
 
     for j in range(row):
         for i in range(column - 1):
@@ -38,15 +38,15 @@ def create(row: int, column: int,
     for i in range(column):
         V.append(random.randint(1000 + D, 9000 - D))
 
-    if M == 2:
+    if M == 2 and row >= 3:
         V2 = []
         xv = []
         for i in range(column):
-            xv.append(random.randint(1, row-1))
+            xv.append(random.randint(1, row-2))
             V2.append(random.randint(1000 + D, 9000 - D))
 
     else:
-        xv = row
+        xv = [row] * column
 
     for i in range(column):
         for j in range(row - 1):
@@ -64,7 +64,6 @@ def random_create(row: int, column: int):
     D = random.randint(100, 2000)
     D = 1
     M = random.randint(1,2)
-    M = 2
 
     print(f"D = {D}")
     print(f"M = {M}")
