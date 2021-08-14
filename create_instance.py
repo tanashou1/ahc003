@@ -2,7 +2,7 @@ from __future__ import annotations
 import random
 
 
-def create(row: int, column: int,
+def create(column: int, row: int,
            D: int, M: int, 
            seed: int = 0
            ) -> tuple[list[list[int]], list[list[int]]]:
@@ -59,7 +59,7 @@ def create(row: int, column: int,
     return h, v
 
 
-def random_create(row: int, column: int):
+def random_create(column: int, row: int):
     random.seed(0)
     D = random.randint(100, 2000)
     D = 1
@@ -68,7 +68,7 @@ def random_create(row: int, column: int):
     print(f"D = {D}")
     print(f"M = {M}")
 
-    return create(row, column, D, M)
+    return create(column, row, D, M)
 
 
 if __name__ == "__main__":

@@ -3,7 +3,8 @@ import matplotlib.pyplot as plt
 import create_instance
 
 
-def visualize(h: list[list[int]], v: list[list[int]]):
+def visualize(h: list[list[int]], v: list[list[int]],
+              footprint: list[tuple[int, int]] = []):
     row = len(h[0])
     column = len(v)
     
@@ -31,6 +32,15 @@ def visualize(h: list[list[int]], v: list[list[int]]):
 
             plt.plot(x, y, color=c)
             plt.text(sum(x)/2, sum(y)/2, v[i][j])
+    
+    if footprint:
+        for i in range(1, len(footprint)):
+            x = [footprint[i-1][0], footprint[i][0]]
+            y = [-footprint[i-1][1], -footprint[i][1]]
+
+            c = v_color[i][j]
+
+            plt.plot(x, y, color=c, lw=10)
     
     plt.show()
 
@@ -69,6 +79,7 @@ def _get_color(h: list[list[int]], v: list[list[int]],
             v_color[i][j] = cmap(x)
     
     return h_color, v_color
+
 
 if __name__ == "__main__":
     h, v = create_instance.random_create(10, 10)
