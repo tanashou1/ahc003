@@ -71,9 +71,24 @@ def random_create(column: int, row: int):
     return create(column, row, D, M)
 
 
+def get_answer(h, v) -> list[int]:
+    ans_list = []
+    column = len(h) + 1
+    row = len(h[0])
+
+    for j in range(row):
+        for i in range(column):
+            ans_list.append(h[i][j])
+            
+    for j in range(row):
+        for i in range(column):
+            ans_list.append(v[i][j])
+    
+    return ans_list
+
+
 if __name__ == "__main__":
     h, v = random_create(10, 10)
 
     print(h)
     print(v)
-
