@@ -23,7 +23,7 @@ def create(column: int, row: int,
             xh.append(random.randint(1, column-2))
             H2.append(random.randint(1000 + D, 9000 - D))
     else:
-        xh = [column] + row
+        xh = [column] * row
 
     for j in range(row):
         for i in range(column - 1):
@@ -62,8 +62,9 @@ def create(column: int, row: int,
 def random_create(column: int, row: int):
     random.seed(0)
     D = random.randint(100, 2000)
-    D = 1
+    D = 100
     M = random.randint(1,2)
+    M = 1
 
     print(f"D = {D}")
     print(f"M = {M}")
@@ -77,10 +78,10 @@ def get_answer(h, v) -> list[int]:
     row = len(h[0])
 
     for j in range(row):
-        for i in range(column):
+        for i in range(column - 1):
             ans_list.append(h[i][j])
             
-    for j in range(row):
+    for j in range(row - 1):
         for i in range(column):
             ans_list.append(v[i][j])
     
